@@ -5,6 +5,7 @@ import torch.nn as nn # construct NN
 import torch.nn.functional as F # implements forward and backward definitions of an autograd operation
 import torch.optim as optim # different update rules such as SGD, Nesterov-SGD, Adam, RMSProp, etc
 from torch.autograd import Variable
+import pandas as pd
 # fix seed
 seed=17
 np.random.seed(seed)
@@ -16,19 +17,6 @@ class SUSY_Dataset(torch.utils.data.Dataset):
     """SUSY pytorch dataset."""
 
     def __init__(self, data_file, root_dir, dataset_size, train=True, transform=None, high_level_feats=None):
-        """
-        Args:
-            csv_file (string): Path to the csv file with annotations.
-            root_dir (string): Directory with all the images.
-            train (bool, optional): If set to `True` load training data.
-            transform (callable, optional): Optional transform to be applied on a sample.
-            high_level_festures (bool, optional): If set to `True`, working with high-level features only. 
-                                        If set to `False`, working with low-level features only.
-                                        Default is `None`: working with all features
-        """
-
-        import pandas as pd
-
         features=['SUSY','lepton 1 pT', 'lepton 1 eta', 'lepton 1 phi', 'lepton 2 pT', 'lepton 2 eta', 'lepton 2 phi', 
                 'missing energy magnitude', 'missing energy phi', 'MET_rel', 'axial MET', 'M_R', 'M_TR_2', 'R', 'MT2', 
                 'S_R', 'M_Delta_R', 'dPhi_r_b', 'cos(theta_r1)']
@@ -111,9 +99,7 @@ class model(nn.Module):
         super(model, self).__init__()
         #=========== encoder ================
         # an affine operation: y = Wx + b        
-        self.fc_en1 = nn.Linear(18, 200) # all features
-        # self.batchnorm1=nn.BatchNorm1d(200, eps=1e-05, momentum=0.1)
-        # self.batchnorm2=nn.BatchNorm1d(100, eps=1e-05, momentum=0.1)
+        self.fc_en1 = nn.Linear(18, 200) # all features        
         self.fc_en2 = nn.Linear(200, 100) # see forward function for dimensions
         #=========== decoder ================
         self.fc_de1 = nn.Linear(100,200)
