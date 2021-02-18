@@ -6,7 +6,7 @@ Le, L., Patterson, A., & White, M. (2018). Supervised autoencoders: Improving ge
 
 The implementation is done for CIFAR10 and SUSY datasets and results are shown in the following.
 
-Here we have results for test accuracy on CIFAR10 dataset. Weight of prediction loss in range [0.2, 0.9] in training phase.
+Here we have results for test accuracy on CIFAR10 dataset. Weight of prediction loss in range [0.2, 0.9] in test phase.
 ![image](https://user-images.githubusercontent.com/15813546/107555534-21b47480-6b8c-11eb-843e-b23ff9eb73b5.png)
 
 
