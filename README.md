@@ -8,7 +8,7 @@ The implementation is done for CIFAR10 and SUSY datasets. Results are shown in t
 
 
 
-Test accuracy on CIFAR10 dataset. The Weight of prediction loss is in range [0.2, 0.9] for test trianing.
+Test accuracy on CIFAR10 dataset. The Weight of reconstruction loss is in range [0.2, 0.9].
 ![image](https://user-images.githubusercontent.com/15813546/107555534-21b47480-6b8c-11eb-843e-b23ff9eb73b5.png)
 
 
